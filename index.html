@@ -307,7 +307,9 @@ function salvarRegistro(){
   var setor=document.getElementById('f-setor').value.trim();
   var tl=document.getElementById('f-tema').value.trim();
   var tema=tl||(dados.tema?dados.tema.titulo:'');
-  var desc=document.getElementById('f-desc').value.trim();
+  var descCampo=document.getElementById('f-desc').value.trim();
+  var descTema=(!tl&&dados.tema&&dados.tema.desc)?dados.tema.desc:'';
+  var desc=descCampo||(descTema?descTema:'');
   var parts=getParts();
   if(!nome){toast('Informe seu nome');return;}
   if(!setor){toast('Informe o setor');return;}
