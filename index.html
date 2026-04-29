@@ -192,6 +192,11 @@ body { font-family: Arial, sans-serif; background: #1D3E47; }
         <div class="campo"><label>Nova senha</label><input type="password" id="adm-nova" placeholder="Nova senha..."></div>
         <button class="btn btn-vermelho" onclick="alterarSenha()">Alterar senha</button>
       </div>
+      <div class="card">
+        <div class="card-tit">Apagar Historico</div>
+        <p style="font-size:13px;color:#8A8070;margin-bottom:12px">Apaga todos os registros salvos no aparelho. Esta acao nao pode ser desfeita.</p>
+        <button class="btn btn-vermelho" onclick="apagarHistorico()">Apagar todo o historico</button>
+      </div>
       <button class="btn btn-cinza" onclick="sairAdm()">Sair do administrador</button>
       <div style="height:30px"></div>
     </div>
@@ -517,6 +522,11 @@ function alterarSenha(){
   if(!n){toast('Digite a nova senha');return;}
   dados.senha=n;salvar();
   document.getElementById('adm-nova').value='';toast('Senha alterada!');
+}
+
+function apagarHistorico(){
+  if(!confirm('Tem certeza? Todos os registros serao apagados permanentemente.'))return;
+  dados.registros=[];salvar();homeInit();toast('Historico apagado!');
 }
 
 function sairAdm(){
