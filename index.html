@@ -535,6 +535,17 @@ function sairAdm(){
 }
 
 carregar();homeInit();
+
+// Le tema da URL automaticamente
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var temaUrl = params.get('tema');
+  var descUrl = params.get('desc');
+  if(temaUrl){
+    dados.tema = { titulo: decodeURIComponent(temaUrl), desc: descUrl ? decodeURIComponent(descUrl) : '' };
+    salvar();
+  }
+})();
 </script>
 </body>
 </html>
